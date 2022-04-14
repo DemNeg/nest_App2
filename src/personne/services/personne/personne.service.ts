@@ -62,6 +62,7 @@ export class PersonneService {
             personne.active = newPersonne.active;
         }
 
+        return personne;
 
     }
 
@@ -75,10 +76,12 @@ export class PersonneService {
             personne.adresse = newPersonne.adresse?newPersonne.adresse:personne.adresse;
             personne.active = newPersonne.active?newPersonne.active:personne.active;
         }
+
+        return personne;
     }
 
     // Supprime une personne 
-    delete(id: number){
+    deletePersonne(id: number){
         const index= this.personnes.findIndex((personneCourant:PersonneEntity) => personneCourant.id === id);
         // splice to delete it
         if(index >= 0)
