@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
+import { PaginationDto } from '../dtos/pagination_dto';
 import { PersonneAddDto } from '../dtos/personne_add.dto';
 import { PersonneEditDto } from '../dtos/personne_edit.dto';
 import { PersonneService } from '../services/personne/personne.service';
@@ -11,7 +12,7 @@ export class PersonneController {
 
     // Action pour retourner la liste des personnes
     @Get('all')
-    getAllPersonnes()
+    getAllPersonnes(@Query()paginationParams:PaginationDto)
     {
         return this.personneService.getAllPersonnes();
     }
