@@ -1,11 +1,9 @@
 /* eslint-disable prettier/prettier */
-export class PersonneEntity {
-    id: number;
+export class PersonneAddDto {
+    
     nom: string;
     prenom: string;
     age: number;
     adresse: string;
     email: string;
-    dateCreation: Date;
-    active: boolean;
 }
