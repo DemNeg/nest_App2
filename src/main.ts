@@ -1,16 +1,19 @@
 /* eslint-disable prettier/prettier */
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const configService = app.get(ConfigService);
+
   // To enable cors policy
   // 1. npm install --save @nest-middlewares/cors
   // 2. Add this section
   const corsOptions = {
-    origin: ['http://localhost:4200'],
+    origin: [configService.get('http://localhost:4200')],
   };
   app.enableCors(corsOptions);
 
@@ -22,6 +25,6 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000);
+  await app.listen(configService.get('APP_PORT'));
 }
 bootstrap();
