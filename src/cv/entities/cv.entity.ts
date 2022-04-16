@@ -23,7 +23,7 @@ export class CvEntity extends TimestampEntity {
   age: number;
 
   @Column()
-  cin: string;
+  cin: number;
 
   @Column()
   job: string;
